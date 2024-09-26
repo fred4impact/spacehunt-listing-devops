@@ -1,0 +1,268 @@
+
+{% extends 'base_main.html' %}
+
+{% load static %}
+
+{% block content %}
+<!-- start of how easy it works  -->
+<div class="my-lg-14 my-7">
+  <div class="container">
+    <div class="row ">
+      <div class="col-12">
+        <div class="text-center mb-10">
+          <h2 class="mb-1">Discover the simplicity of our process</h2>
+          <p class="mb-0">Embark on the journey to your dream home with these 3 simple steps: .</p>
+        </div>
+      </div>
+    </div>
+    <div class="row ">
+      <div class="col-md-4 col-12">
+        <div class="step text-center mb-6 mb-lg-0">
+          <div class="border border-primary border-3 icon-xxxl icon-shape rounded-circle bg-white mb-lg-7 mb-3">
+            <div class="icon-shape icon-xl bg-white shadow rounded-circle ">
+              <i class="bi bi-search text-primary fs-4"></i>
+            </div>
+          </div>
+          <h3 class="mb-3">1. Search</h3>
+          <p class="mb-0 px-lg-3">Effortlessly find your perfect match with our advanced search feature.</p>
+        </div>
+      </div>
+      <div class="col-md-4 col-12">
+        <div class="step text-center mb-6 mb-lg-0">
+          <div class="border border-info border-3 icon-xxxl icon-shape rounded-circle bg-white mb-lg-7 mb-3">
+            <div class="icon-shape icon-xl bg-white shadow rounded-circle ">
+              <i class="bi bi-gear text-info fs-4"></i>
+            </div>
+          </div>
+          <h3 class="mb-3">2. Choose process</h3>
+          <p class="mb-0 px-lg-3">Streamline your home selection process with our easy-to-follow steps </p>
+        </div>
+      </div>
+      <div class="col-md-4 col-12">
+        <div class="text-center mb-6 mb-lg-0">
+          <div class="border border-success border-3 icon-xxxl icon-shape rounded-circle bg-white mb-lg-7 mb-3">
+            <div class="icon-shape icon-xl bg-white shadow rounded-circle ">
+              <i class="bi bi-bullseye text-success fs-4"></i>
+            </div>
+          </div>
+          <h3 class="mb-3">3. Book your property</h3>
+          <p class="mb-0 px-lg-3">Unlock the Door to Your Dream Property. </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="py-lg-14 py-7 bg-light">
+  <div class="container">
+
+    <div class="row ">
+      <div class="col-12">
+        <div class="mb-8">
+          <h2 class="mb-1">Featured Property</h2>
+          <p class="mb-0">Properties for rent in Africa</p>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class="col-12">
+        <ul class="nav nav-pills mb-6 nav-pills-rounded" id="pills-tab" role="tablist">
+          <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="pills-all-tab" data-bs-toggle="pill"
+              data-bs-target="#pills-all" type="button" role="tab" aria-controls="pills-all"
+              aria-selected="true">All</button>
+          </li> 
+        </ul>
+
+
+
+        <div class="tab-content" id="pills-tabContent">
+          <div class="tab-pane fade show active" id="pills-all" role="tabpanel"
+          aria-labelledby="pills-all-tab" tabindex="0">
+
+  <!-- here begins the card -->
+          <div class="row g-4">
+
+            {% for feature in featured_properties %}
+
+            <div class="col-lg-6">
+              <div class="card border-0 shadow-sm img-hover">
+                <a href="{{ property_detail_url }}" class="text-body">
+                <div class="row g-0">
+
+                  <!-- thumbnail -->
+                  <div class="col-12 col-md-5 rounded-start "
+                  style="background-image: url('{{ feature.photo.url }}'); background-repeat: no-repeat; background-size: cover;">
+                  <img src="{{ feature.photo.url }}" class="img-fluid d-md-none invisible" alt="Property Image">
+                  </div>
+
+
+                  <!-- title property type-->
+              <div class="col-md-7 ">
+                <div class="card-body p-4">
+                  <div class="">
+                    <div class="d-flex justify-content-between mb-3">
+
+                      {% if feature.property_type == 'deluxe_houses' %}
+                      <span class="badge bg-light-danger text-danger">{{ feature.property_type|capfirst }}</span>
+                  {% elif feature.property_type == 'apartments' %}
+                      <span class="badge bg-light-success text-success">{{ feature.property_type|capfirst }}</span>
+                  {% elif feature.property_type == 'modern_flats' %}
+                      <span class="bg-light-warning text-warning">{{ feature.property_type|capfirst }}</span>
+                  {% else %}
+                      <span class="badge bg-light-info text-info">{{ feature.property_type|capfirst }}</span>
+                  {% endif %}
+                  
+                 
+
+                      <span class="icon-shape icon-xs bg-light rounded text-muted" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="add to wishlist"><i
+                          class="bi bi-heart fs-6"></i></span>
+                    </div>
+                    <div class="lh-1">
+                      <h4 class="mb-0 h5">{{ feature.name}}</h4>
+                      <p class="mb-0 fs-6">{{ feature.description | truncatewords:8}}</p>
+                    </div>
+
+                  <!-- props features -->
+                  <div class="fs-6 mt-6 lh-1">
+                    <span class="me-2"><span class="fas fa-bed me-1 text-muted"></span><span>{{ feature.bedrooms}}</span></span>
+                    <span class="me-2"><span class="fas fa-bath me-1 text-muted"></span><span>{{feature.bathrooms}}</span></span>
+
+                    <span class="me-2"><span class="fas fa-chart-area me-1 text-muted"></span><span>{{ feature.total_area}}</span></span>
+                  </div>
+                  
+
+                  </div>
+                </div>
+              </div>
+                       
+                </div>
+              </a>
+
+          </div>
+        </div>
+
+            {% endfor %} <!-- endfor loops -->
+            <!--the second col start here-->
+            
+          </div>
+          <!-- end card row -->
+        </div>
+        </div>
+
+        <!-- show more links --->
+        <!-- <div class="mt-4">
+          <a href="#" class="btn btn-primary">Show more listing</a>
+        </div> -->
+ <!--  end show more links --->
+      </div>
+    </div>
+  </div>
+</div>
+<div class="my-lg-14 my-7">
+  <div class="container">
+    <div class="row ">
+      <div class="col-12">
+        <div class="mb-8">
+          <h2 class="mb-1">Why Choose us</h2>
+          <p class="mb-0">It is our very aim to provide our customers world class services and comprehensive real
+            estate solutions.</p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="col-lg-7">
+        <div class="">
+          <p class="lead mb-0"><a href="/"
+              target="_blank">Spacehunt</a> trusted by housands: Bringing Joy to Happy Individuals and Companies Alike! Our Goal is to Provide the Best Properties at Affordable Prices.</p>
+
+          <div class="mt-5 mb-6 mb-lg-0">
+            <img src="{% static 'images/property-img.jpg' %}" alt="" class="img-fluid rounded-3">
+            <div class="mx-3 mt-n8">
+              <div class="row row-cols-md-3 row-cols-1 g-2">
+                <div class="col">
+                  <div class="card border-0 shadow-sm img-hover">
+                    <div class="card-body p-4">
+                      <div class="mb-2"><i class="bi bi-emoji-smile text-primary fs-3"></i>
+                      </div>
+                      <div class="lh-1">
+                        <h3 class="mb-0 fw-bold">10k</h3>
+                        <span>Happy Customers</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="card border-0 shadow-sm img-hover">
+                    <div class="card-body p-4">
+                      <div class="mb-2"><i class="bi bi-house-door text-primary fs-3"></i>
+                      </div>
+                      <div class="lh-1">
+                        <h3 class="mb-0 fw-bold">2,500</h3>
+                        <span>Homes for Rent</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col">
+                  <div class="card border-0 shadow-sm img-hover">
+                    <div class="card-body p-4">
+                      <div class="mb-2"> <i class="bi bi-cup-hot text-primary fs-3"></i></div>
+                      <div class="lh-1">
+                        <h3 class="mb-0 fw-bold">1,000+</h3>
+                        <span>Home Recently Sold</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="offset-lg-1 col-lg-4">
+        <div class="mb-4">
+          <div class="icon-shape icon-xl bg-light-primary text-muted mb-3 rounded-circle">
+            <i class="bi bi-credit-card text-primary fs-3"></i>
+          </div>
+          <h4>Easy payment method</h4>
+          <p class="mb-0">The most common types of property payment plans proposed to the buyers are: Down payment
+            linked plan.</p>
+        </div>
+        <div class="mb-4">
+          <div class="icon-shape icon-xl bg-light-info text-muted mb-3 rounded-circle">
+            <i class="bi bi-file-earmark-text text-info fs-3"></i>
+          </div>
+          <h4>Tax Advantage</h4>
+          <p class="mb-0">The payment of property tax results in the low administrative costs when compared to other
+            taxes. </p>
+        </div>
+        <div class="mb-4">
+          <div class="icon-shape icon-xl bg-light-success text-muted mb-3 rounded-circle">
+            <i class="bi bi-house-door text-success fs-3"></i>
+          </div>
+          <h4>Property Insurance</h4>
+          <p class="mb-0">When we say property insurance, it's a type of home insurance that provides protection
+            coverage for property owners.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- footer  -->
+</div>
+
+
+
+
+
+
+   <!-- end of feature property   -->
+{% endblock content %}

@@ -1,0 +1,344 @@
+{% extends 'just_base.html' %}
+{% load static %}
+{% block content %}
+
+
+<!-- listing slide -->
+<div class="container mt-5">
+  <div class="py-22 position-relative rounded-3" style="background: url('{{ property.photo.url }}')no-repeat center center; ">
+      <div class="row">
+          <div class="col-xl-12 col-lg-12 col-md-12 col-12">
+              <!-- listing badges -->
+              <div class="position-absolute bottom-0 mb-5 ms-5">
+                  <div>
+                      <a href="#" class="btn btn-white btn-sm"> <span class="mdi mdi-home me-1 text-danger"></span>{{ property.property_type|capfirst}}</a>
+                      <a href="#gallery" class="btn btn-white btn-sm">View Photos</a></div>
+              </div>
+              <!-- listing badges -->
+          </div>
+      </div>
+  </div>
+</div>
+<div class="py-6">
+  <div class="container">
+      <div class="row">
+          <div class="col-xl-8 col-lg-8 col-md-12 col-12">
+              <div class="card mb-4">
+                  <!-- listing detail head -->
+                  <div class="card-body p-4">
+                      <h2 class="mb-2">{{ property.name }}</h2> 
+                      <p class="mb-4 fs-6">{{property.description|truncatewords:10}}</p>
+                      <div class="text-sm">
+                        
+                          <span class="me-2"><i class="mdi mdi-home text-primary"></i><span class="ms-2">{{ property.bedrooms}} Bedrooms</span></span>
+                          <span class="me-2"><i class="mdi mdi-garage text-primary"></i><span class="ms-2">{{ property.garage}} Garage</span></span>
+                          <span class="me-2"><i class="mdi mdi-scale-bathroom text-primary"></i><span class="ms-2">{{property.bathrooms }}
+            Bath</span></span>
+                      </div>
+                  </div>
+                  <!-- listing detail head -->
+              </div>
+              <!-- listing detail -->
+              <div class="card mb-4">
+                  <div class="card-body p-4">
+                      <h4>Overview</h4>
+                      <p>{{ property.description }} </p>
+                      <p class="mb-0"> </p>
+                  </div>
+              </div>
+              <!-- listing detail -->
+              <!-- listing detail -->
+              <div class="card mb-4">
+                  <div class="card-body p-4">
+                      <h4 class="mb-3">Amenities</h4>
+                      <div class="row">
+                          <div class="col-md-6"> 
+                            <ul class="list-group list-unstyled">
+                                {% for feature in property.features.all %}
+                                  <li class="list-item"><span class="mdi mdi-air-conditioner me-2 text-dark fs-5"></span>{{ feature }}</li>
+                                {% endfor %}
+                              </ul>
+                            
+                          </div>
+                          <!-- <div class="col-md-6">
+                              <ul class="list-group list-unstyled">
+                                  <li class="list-item"><span class="mdi mdi-thermometer-lines me-2 text-dark  fs-5"></span>Heating
+                                  </li>
+                                  <li class="list-item"><span class="mdi mdi-toilet me-2 text-dark  fs-5"></span>Toiletteries
+                                  </li>
+                                  <li class="list-item"><span class="mdi mdi-television me-2 text-dark  fs-5"></span>Desk for work
+                                  </li>
+                                  <li class="list-item"><span class="mdi mdi-washing-machine me-2 text-dark  fs-5"></span>Washing machine
+                                  </li>
+                              </ul>
+                          </div> -->
+                      </div>
+                  </div>
+              </div>
+
+              <!-- listing detail -->
+              <!-- listing detail -->
+              <div class="card mb-4">
+                  <div class="card-body p-4">
+                      <h4>Reviews</h4> 
+                     <!-- begins average rating card--> 
+                      <!-- <div class="row border-bottom mb-5 pb-5 mt-3">
+                          <div class="col-md-2">
+                              <div class="text-lg-center">
+                                  <h2 class="display-5 fw-bold mb-0 lh-1">3.8</h2>
+                                  <p class="mb-0">Reviews</p>
+                                  <p><span class="mdi mdi-star text-primary"></span><span class="mdi mdi-star text-primary"></span><span class="mdi mdi-star text-primary"></span><span class="mdi mdi-star text-primary"></span><span class="mdi mdi-star text-primary"></span></p>
+                              </div>
+                          </div>
+                          <div class="col-md-5">
+                              <div class="d-flex justify-content-between">
+                                  <div><span>Atmosphere</span></div>
+                                  <div> <span class="mdi mdi-star text-primary"></span><span class="mdi mdi-star text-primary"></span><span class="mdi mdi-star text-primary"></span><span class="mdi mdi-star text-primary"></span><span class="mdi mdi-star text-primary"></span>                                                <span class="review-list-value">0.5</span></div>
+                              </div>
+                              <div class="d-flex justify-content-between">
+                                  <div><span>Security</span></div>
+                                  <div> <span class="mdi mdi-star text-primary"></span><span class="mdi mdi-star text-primary"></span><span class="mdi mdi-star text-primary"></span><span class="mdi mdi-star text-primary"></span><span class="mdi mdi-star text-primary"></span>                                                <span class="review-list-value">0.5</span>
+                                  </div>
+                              </div>
+                              <div class="d-flex justify-content-between">
+                                  <div><span>Location</span></div>
+                                  <div><span class="mdi mdi-star text-primary"></span><span class="mdi mdi-star text-primary"></span><span class="mdi mdi-star text-primary"></span><span class="mdi mdi-star text-primary"></span><span class="mdi mdi-star-outline text-primary"></span>                                                <span>4.0</span>
+                                  </div>
+                              </div>
+                              <div class="d-flex justify-content-between">
+                                  <div><span>Facilities</span> </div>
+                                  <div><span class="mdi mdi-star text-primary"></span><span class="mdi mdi-star text-primary"></span><span class="mdi mdi-star text-primary"></span><span class="mdi mdi-star text-primary"></span><span class="mdi mdi-star-half text-primary"></span>
+                                      <span>4.5</span></div>
+                              </div>
+                          </div>
+                          <div class="col-md-5">
+                              <div class="d-flex justify-content-between">
+                                  <div><span>Staff</span> </div>
+                                  <div><span class="mdi mdi-star text-primary"></span><span class="mdi mdi-star text-primary"></span><span class="mdi mdi-star text-primary"></span><span class="mdi mdi-star text-primary"></span><span class="mdi mdi-star text-primary"></span>
+                                      <span>0.5</span></div>
+                              </div>
+                              <div class="d-flex justify-content-between">
+                                  <div><span>Cleanliness</span></div>
+                                  <div><span class="mdi mdi-star text-primary"></span><span class="mdi mdi-star text-primary"></span><span class="mdi mdi-star text-primary"></span><span class="mdi mdi-star text-primary"></span><span class="mdi mdi-star text-primary"></span>
+                                      <span>0.5</span></div>
+                              </div>
+                              <div class="d-flex justify-content-between">
+                                  <div><span>Value of money</span></div>
+                                  <div><span class="mdi mdi-star text-primary"></span><span class="mdi mdi-star text-primary"></span><span class="mdi mdi-star text-primary"></span><span class="mdi mdi-star text-primary"></span><span class="mdi mdi-star-outline text-primary"></span>                                                <span>4.0</span>
+                                  </div>
+                              </div>
+                          </div>
+                      </div> -->
+
+                      <!-- end everage rating card -->
+
+
+                     
+                      <div class="row">
+                        {% for review in property.reviews.all %}
+                          <div class="col-md-12 mb-5">
+                              <div class="row">
+                                  <div class="col-md-3">
+                                      <div>
+                                        <img src="{{ review.user.picture.url }}"" alt="user avatar" class="avatar-md avatar rounded-circle mb-3">
+                                          <h5 class="mb-n1">{{ review.user.first_name }}</h5>
+                                          <small>{{ review.created_at }}</small>
+                                      </div>
+                                  </div>
+                            <div class="col-md-9">
+                                <div>
+                                    <h5 class="fw-bold mb-2">{{ review.comment }}
+                                    </p>
+
+                                    <!-- review ratings -->
+                                    <div class="rating-container">
+                                    {% if review.get_rating >= 1 %}
+                                    <span class="mdi mdi-star text-primary"></span>
+                                    {% endif %}
+                                    {% if review.get_rating >= 2 %}
+                                    <span class="mdi mdi-star text-primary"></span>
+                                    {% endif %}
+                                    {% if review.get_rating >= 3 %}
+                                    <span class="mdi mdi-star text-primary"></span>
+                                    {% endif %}
+                                    {% if review.get_rating >= 4 %}
+                                    <span class="mdi mdi-star text-primary"></span>
+                                    {% endif %}
+                                    {% if review.get_rating == 5 %}
+                                    <span class="mdi mdi-star text-primary"></span>
+                                    {% endif %}
+
+                                     <!--end  review ratings -->
+                                </div>
+                                
+                                    
+                                    <!-- <span class="mdi mdi-star text-primary"></span><span class="mdi mdi-star text-primary"></span><span class="mdi mdi-star text-primary"></span><span class="mdi mdi-star text-primary"></span> -->
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                          {% endfor %}
+                          <!-- <div class="col-md-12">
+                              <div class="row">
+                                  <div class="col-md-3">
+                                      <div><img src="../assets/images/avatar-2.jpg" alt="Rentkit Directory & Listing Bootstrap 5 Theme" class="avatar-md avatar rounded-circle mb-3">
+                                          <h5 class="mb-n1">Sameera Badami</h5>
+                                          <small>30 May, 2021</small>
+                                      </div>
+                                  </div>
+                                  <div class="col-md-9">
+                                      <div>
+                                          <h5 class="fw-bold mb-2">Superb Place for stay</h5>
+                                          <p>The place is too good, the staff was very cooperative &responsive at any given time. What I appreciate the most is they arranged our stay in these times of crisis by doing their best in all manner. We
+                                              are very grateful to them for that.
+                                          </p>
+                                          <span class="mdi mdi-star text-primary"></span><span class="mdi mdi-star text-primary"></span><span class="mdi mdi-star text-primary"></span><span class="mdi mdi-star text-primary"></span><span class="mdi mdi-star text-primary"></span>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div> -->
+                      </div>
+                      
+                  </div>
+                  
+                  <!-- listing detail -->
+              </div>
+           
+           
+
+
+
+              <!-- listing detail -->
+              <!-- listing detail -->
+            
+              <!-- listing detail -->
+              <!-- listing detail -->
+              <div class="card mb-4" id="gallery">
+                  <div class="card-body p-4">
+                      <h4 class="mb-4">Gallery</h4>
+                      <div class="zoom-gallery">
+                          <div class="row">
+                              <div class="col-md-4">
+                                  <a href="../assets/images/gallery-zoom-img-1.jpg" title="Gallery Image Rentkit Directory Bootstrap 5 Template">
+                                      <img src="../assets/images/gallery-img-1.jpg" class="img-fluid rounded-3 mb-4" alt="Rentkit Directory & Listing Bootstrap 5 Theme">
+                                  </a>
+                              </div>
+                              <div class="col-md-4">
+                                  <a href="../assets/images/gallery-zoom-img-2.jpg" title="Gallery Image Rentkit Directory Bootstrap 5 Template">
+                                      <img src="../assets/images/gallery-img-2.jpg" class="img-fluid rounded-3 mb-4" alt="Rentkit Directory & Listing Bootstrap 5 Theme">
+                                  </a>
+                              </div>
+                              <div class="col-md-4">
+                                  <a href="../assets/images/gallery-zoom-img-3.jpg" title="Gallery Image Rentkit Directory Bootstrap 5 Template">
+                                      <img src="../assets/images/gallery-img-3.jpg" class="img-fluid rounded-3 mb-4" alt="Rentkit Directory & Listing Bootstrap 5 Theme">
+                                  </a>
+                              </div>
+                              <div class="col-md-4">
+                                  <a href="../assets/images/gallery-zoom-img-4.jpg" title="Gallery Image Rentkit Directory Bootstrap 5 Template">
+                                      <img src="../assets/images/gallery-img-4.jpg" class="img-fluid rounded-3 mb-4 mb-lg-0" alt="Rentkit Directory & Listing Bootstrap 5 Theme">
+                                  </a>
+                              </div>
+                              <div class="col-md-4">
+                                  <a href="../assets/images/gallery-zoom-img-3.jpg" title="Gallery Image Rentkit Directory Bootstrap 5 Template">
+                                      <img src="../assets/images/gallery-img-3.jpg" class="img-fluid rounded-3 mb-4  mb-lg-0" alt="Rentkit Directory & Listing Bootstrap 5 Theme">
+                                  </a>
+                              </div>
+                              <div class="col-md-4">
+                                  <a href="../assets/images/gallery-zoom-img-2.jpg">
+                                      <img src="../assets/images/gallery-img-2.jpg" class="img-fluid rounded-3 mb-4 mb-lg-0" alt="Rentkit Directory & Listing Bootstrap 5 Theme">
+                                  </a>
+                              </div>
+                          </div>
+
+                      </div>
+                  </div>
+              </div>
+              <!-- listing detail -->
+              <!-- listing detail -->
+             
+              <!-- listing detail -->
+              <!-- listing detail -->
+              <div class="card mb-4">
+                  <div class="card-body p-4">
+                      <h4 class="mb-1">Location</h4>
+                      <p>Juana Henery’s place is located in Ahemedabad, Gujarat, India</p>
+                      <div id="detailMap" class="listing-map"></div>
+                  </div>
+              </div>
+              <!-- listing detail -->
+              <!-- listing detail -->
+              
+              <!-- listing detail -->
+          </div>
+          <div class="col-xl-4 col-lg-4 col-md-12 col-12 ">
+              <!-- listing detail -->
+              <div>
+                  <!-- listing widget -->
+                  <div class="card mb-4 ">
+                      <div class="card-body p-4">
+                          <div class="d-flex align-items-center mb-3">
+                              <h3 class="fw-bold">{{ property.price}}</h3><small class="text-muted ms-2"> {{property.status| capfirst }}</small>
+                          </div>
+                          <div>
+                              <form>
+                                  <div class="mb-3">
+                                      <label class="form-label">Your Booking</label>
+                                      <div class="input-group mb-3">
+                                          <input type="text" class="form-control" id="dateSelect" placeholder="Select Date" aria-label="Recipient's username">
+                                          <span class="input-group-text bg-transparent"><i
+                    class="mdi mdi-calendar-month-outline"></i></span>
+                                      </div>
+                                  </div>
+                                  <!-- select -->
+                                  <!-- <select class="select2">
+              <option>Guest</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+            </select> -->
+                                  <div class="mt-3 d-grid">
+                                      <button class="btn btn-primary " type="button">Book to View</button>
+                                  </div>
+                              </form>
+                          </div>
+                      </div>
+                  </div>
+                  <!-- listing widget -->
+                  <!-- listing widget -->
+                  <div class="card mb-4">
+                      <div class="card-body p-4">
+                          <h5 class="mb-0">Hosted by <span class="mdi mdi-medal text-primary float-right"></span>{{property.realtor.first_name}}</h5>
+                          <div class="text-center mt-4">
+                              <img src="{{ property.realtor.picture.url }}" alt="realtor avatar" class="rounded-circle avatar avatar-lg mb-2">
+                              <h5 class="mb-0"></h5>
+                              <small>Agency Name: {{ property.realtor.agency }}</small>
+                              <p class="mb-0 mx-5 mt-3"></p>
+                          </div>
+                      </div>
+                      <div class="border-top card-body p-4 text-center">
+                          <p>Response time: <span class="text-primary">within an hour</span></p>
+                          <div class="d-grid mx-8">
+                              <a href="#" class="btn btn-dark">Contact Realtor</a>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <!-- listing detail -->
+           
+          </div>
+      </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+ {% endblock  %} 
+
+

@@ -1,0 +1,49 @@
+{% load static %}
+<div class="main-wrapper"> 
+    <!-- navbar -->
+    <div class="nav-header nav-header-classic shadow">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <nav class="navbar navbar-expand-lg">
+                        <a class="navbar-brand" href="{% url 'listings:index' %}"> <img src="{% static 'images/newLogoSpacehunt.svg' %}" alt="spacehunt"></a>
+                        <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav me-auto ms-lg-3">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{% url 'listings:index' %}">Home</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" 
+                                    href="/">About us</a>
+                                </li>
+                                <li class="nav-item">
+                                  <a class="nav-link" href="{% url 'listings:property_list' %}">listings</a>
+                              </li>
+                              <li class="nav-item">
+                                <a class="nav-link" href="/">Contact us</a>
+                            </li>   
+                            </ul>
+
+                            <ul class="navbar-nav me-auto ms-lg-3">
+                                <li class="nav-item">
+                        <a class="nav-link"    href="{% url 'realtor_signup' %}"> Register</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link"    href="{% url 'login' %}"> Sign In</a>
+                                            </li>
+                            </ul>
+                            <a href="{% url 'listings:create_property' %}" class="btn btn-primary d-none d-lg-block">List Your Property</a>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+
+     <!-- the end of main wrapper  -->
+</div>

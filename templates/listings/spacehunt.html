@@ -1,0 +1,266 @@
+{% extends 'normal_base.html' %}
+{% load static %}
+
+{% block content %}
+<!-- section cities-->
+
+<div class="py-lg-11 py-7 bg-light">
+    <div class="container">
+    <div class="row">
+    <div class="col-md-12 col-12 text-center">
+    <div class="mb-8">
+    <h2 class="mb-1">Featured Property Cities </h2>
+    <p class="mb-0">Discover thousands of homes for rent in 50+ countries.</p>
+    </div>
+    </div>
+    </div>
+    <div>
+    <div class="row">
+    <!-- card-->
+    <div class="d-flex align-items-lg-stretch col-md-6 col-12 mb-4">
+
+    <div class="card w-100 border-0 overlay-bg img-hover"
+        style="background-size: cover;
+        background-image: url('{% static "images/listing1.jpg" %}')">
+    
+        <div class="pt-4 ps-4 pb-18 z-1">
+          <h3 class="text-white mb-0">Banana Island</h3>
+          <p class="text-white mb-0">87 rentals</p>
+        </div>
+        <a href="pages/listing-category.html" class="stretched-link"></a>
+    
+    </div>
+    
+    
+    
+    </div>
+    <!-- card -->
+    <div class="d-flex align-items-lg-stretch col-md-3 col-12 mb-4">
+    <div class="card w-100 border-0 overlay-bg img-hover "
+    style="background-image: url('{% static "images/listing2.jpg" %}'); background-size: cover; background-position: center center;">
+    
+    <div class="pt-4 ps-4 pb-18 z-1">
+      <h3 class="text-white mb-0">Abuja</h3>
+      <p class="text-white mb-0">68 rentals</p>
+    </div>
+    <a href="pages/listing-category.html" class="stretched-link"></a>
+    
+    </div>
+    
+    
+    </div>
+    <!-- card -->
+    <div class="d-flex align-items-lg-stretch col-md-3 col-12 mb-4">
+    <div class="card w-100 border-0 overlay-bg img-hover "
+    style="background-image: url('{% static "images/listing3.jpg" %}'); background-size: cover; background-position: center center;">
+    
+    <div class="pt-4 ps-4 pb-18 z-1">
+      <h3 class="text-white mb-0">Australia</h3>
+      <p class="text-white mb-0">54 rentals</p>
+    </div>
+    <a href="pages/listing-category.html" class="stretched-link"></a>
+    
+    </div>
+    
+    
+    </div>
+    <!-- card -->
+    <div class="d-flex align-items-lg-stretch col-md-6 col-12 mb-4">
+    <div class="card w-100 border-0 overlay-bg img-hover "
+    style="background-image: url('{% static "images/listing4.jpg" %}'); background-size: cover; background-position: center center;">
+    
+    <div class="pt-4 ps-4 pb-18 z-1">
+      <h3 class="text-white mb-0">Lagos</h3>
+      <p class="text-white mb-0">100 rentals</p>
+    </div>
+    <a href="pages/listing-category.html" class="stretched-link"></a>
+    
+    </div>
+    
+    
+    </div>
+    <!-- card -->
+    <div class="d-flex align-items-lg-stretch col-md-6 col-12 mb-4">
+    <div class="card w-100 border-0 overlay-bg img-hover "
+    style="background-image: url('{% static "images/listing5.jpg" %}'); background-size: cover; background-position: center center;">
+    
+    <div class="pt-4 ps-4 pb-18 z-1">
+      <h3 class="text-white mb-0">Africa</h3>
+      <p class="text-white mb-0">3 rentals</p>
+    </div>
+    <a href="pages/listing-category.html" class="stretched-link"></a>
+    
+    </div>
+    
+    
+    </div>
+    
+    </div>
+    </div>
+    </div>
+    </div>
+    
+  
+    <!-- section listing -->
+  <div class="py-lg-11 py-7">
+    <div class="container">
+    <div class="row">
+    <!-- section heading -->
+    <div class="col-md-12 col-sm-12 col-12">
+    <div class="mb-8 text-center">
+    <h2 class="mb-1">Explore Our Listing</h2>
+    <p>Aliquam ornare pellentesque eros nec fermentum. </p>
+    </div>
+    </div>
+    
+    </div>
+    <div class="row">
+
+     {% for feature in featured_properties %}
+
+    <div class="col-md-4 col-12">
+    <!-- listing block -->
+
+    <div class="mb-4 mb-lg-0">
+    <div class="position-relative ">
+    <div id="listcarousel" class="carousel slide " data-bs-ride="carousel" data-bs-interval="false">
+
+      <ol class="carousel-indicators">
+        <li data-bs-target="#listcarousel" data-bs-slide-to="0" class="active rounded-circle"></li>
+        <li data-bs-target="#listcarousel" data-bs-slide-to="1" class="rounded-circle"></li>
+        <li data-bs-target="#listcarousel" data-bs-slide-to="2" class="rounded-circle"></li>
+      </ol>
+
+      <div class="carousel-inner rounded-3">
+        <div class="carousel-item active">
+          <img src="{{ feature.photo.url }}"  alt="Rentkit Directory & Listing Bootstrap 5 Theme" class="w-100 ">
+        </div>
+      </div>
+      <a class="carousel-control-prev" href="#listcarousel" role="button" data-bs-slide="prev">
+        <i class="mdi mdi-chevron-left icon-shape icon-xs bg-white rounded-circle fs-4"></i>
+        <span class="visually-hidden">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#listcarousel" role="button" data-bs-slide="next">
+        <i class="mdi mdi-chevron-right icon-shape icon-xs bg-white rounded-circle fs-4"></i>
+        <span class="visually-hidden">Next</span>
+      </a>
+    </div>
+    <div class="btn-wishlist"></div>
+
+  <!-- loop for badge -->
+  {% if feature.is_featured %}
+    <span class="badge bg-danger position-absolute -0 ms-3 mt-3 top-0 z-1 ">Featured</span>
+    </div>
+
+
+     {% else %}
+
+     {% endif %}
+     <!-- end loop for badge -->
+
+
+    <div class="mt-3">
+
+    <h4 class="mb-0"> <a href="/" class="text-inherit">{{ feature.name}}</a></h4>
+    <p class="text-sm font-weight-semi-bold">{{ feature.description | truncatewords:15 }}</p>
+    <div class="d-flex justify-content-between mt-3">
+      <div>
+        <span class=" h5">{{ feature.price}}</span><span class="text-sm font-weight-semi-bold ms-1"> for  {{ feature.status}}</span>
+      </div>
+      <div>
+        <span class="mdi mdi-star me-1 text-primary text-sm"></span>
+        <span class="font-weight-semi-bold  text-sm"><span class="text-dark">5.0</span>(8)</span>
+      </div>
+    </div>
+    </div>
+    </div>
+
+
+
+    <!-- listing block -->
+    </div>
+
+
+    {% endfor %} <!-- endfor loops -->
+
+    
+  
+    </div>
+    </div>
+    </div>
+    
+  
+    
+    <!-- section process -->
+  <div class="py-lg-11 py-7 bg-light">
+    <div class="container">
+    <div class="row">
+    <div class="col-md-12 col-12 text-center">
+    <!-- section heading-->
+    <div class="mb-8">
+    <h2 class="mb-1">Our working Process</h2>
+    <p>Aliquam ornare pellentesque eros nec fermentum. </p>
+    </div>
+    </div>
+    </div>
+    <div class="row">
+    <div class="col-md-4 col-sm-12 col-12">
+    <!-- card-->
+    <div class="card mb-3 mb-lg-0 border-0 shadow-sm">
+    <div class="card-body p-6 ">
+    <div class="icon-shape icon-md bg-primary text-white mb-5 rounded-circle">1</div>
+    <h4 class="mb-2">Create a listing for free</h4>
+    <p class="mb-0">Morbi elit sem iaculis quis blandit onewse necpulvinar vitae lectus one enean
+      suultricesut. </p>
+    </div>
+    </div>
+    </div>
+    <div class="col-md-4 col-sm-12 col-12">
+    <!-- card-->
+    <div class="card mb-3 mb-lg-0 border-0 shadow-sm">
+    <div class="card-body p-6 ">
+    <div class="icon-shape icon-md bg-primary text-white mb-5 rounded-circle">2</div>
+    <h4 class="mb-2">How you host is up to you</h4>
+    <p class="mb-0">Vestibulum auctor mximus estquinia vulputate etesd phasellus fermede ntum utodio
+      aliquam laoreete. </p>
+    </div>
+    </div>
+    </div>
+    <div class="col-md-4 col-sm-12 col-12">
+    <!-- card-->
+    <div class="card mb-3 mb-lg-0 border-0 shadow-sm">
+    <div class="card-body p-6 ">
+    <div class="icon-shape icon-md bg-primary text-white mb-5 rounded-circle">3</div>
+    <h4 class="mb-2">Welcome your first guests</h4>
+    <p class="mb-0">Phasellus pulvinar volutpat justo quispose suere ested lorem ipsume volutpat dui id
+      nulla perdietin. </p>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    
+    
+    <!-- section reviews-->
+    
+    
+    <!-- section post  -->
+    
+    
+    <!-- cta  -->
+    <div class="py-xl-17 py-7 " style="background: url('{% static "images/call-action-img.jpg" %}') no-repeat">
+    <div class="container">
+    <div class="row d-flex justify-content-center text-center">
+    <div class="col-xl-6 col-lg-7 col-md-12 col-sm-12 col-12">
+    <h2 class="text-white mb-2 display-5">Want To Become Host?</h2>
+    <p class="text-white mb-6 lead">Fusce ut varius estfacilisis 
+    </p>
+    <a href="{% url 'listings:property_list' %}" class="btn btn-white ">List your space</a>
+    </div>
+    </div>
+    </div>
+    </div>
+
+
+{% endblock%}

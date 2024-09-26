@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<form method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+  
+
+   {{ form|crispy }}
+   {{features_form|crispy }}
+   {{ location_form|crispy }}
+   
+
+<button type="submit" class="btn-block btn-outline-primary">Create Property</button>
+</form>
+  
+  {% endblock %}
+
+  
+    
+<!-- 
+  {{ form|crispy }}
+  {{features_form|crispy }}
+  {{ location_form|crispy }}  -->
+    
+   
+
+   

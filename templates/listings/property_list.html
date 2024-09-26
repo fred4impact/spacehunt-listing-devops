@@ -1,0 +1,391 @@
+{% extends 'listing_base.html' %}
+{% load static %}
+
+{% block content %}
+
+
+  <!-- main wrapper  -->
+  <div class="main-wrapper">
+
+    <!-- pageheader -->
+    <div class="py-6 py-lg-8 ">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-6 col-md-8  col-12">
+                    <h1 class="display-5 fw-bold mb-0">Property Listings</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- end pageheader -->
+
+
+    <!-- content -->
+    <div class="pb-10">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-md-12 col-sm-12 col-12 ">
+                    <div class="border-bottom pb-6 mb-6">
+                        <div class="hero-search-area-form">
+                            <h2 class="mb-1"> Filter property according location, price and property type</h2>
+                            <p class="mb-4">On average they rated their stays 4.7 out of 5 stars.</p>
+                            <!-- form  -->
+                            <form>
+                                <div class="row g-md-3 g-0">
+                                    <div class="col-md-4 mb-3">
+                                        <!-- select  -->
+                                        <select class="select2 ">
+                  <option>Location</option>
+                  <option value="Ahmedabad">Nigeria</option>
+                  <option value="Surat">United State</option>
+                  <option value="Surat">--</option>
+                </select>
+                      </div>
+                      <div class="col-md-4">
+                        <!-- guest  -->
+                        <select class="select2">
+                        <option>Price</option>
+                        <option value="1">$100</option>
+                        <option value="2">$200</option>
+                            >
+                          </select>
+                    </div>
+                                    <div class="col-md-4">
+                                        <!-- guest  -->
+                                        <select class="select2">
+                                        <option>Property Type</option>
+                                        <option value="1">Apartment</option>
+                                        <option value="2">$200</option>
+                                            >
+                                          </select>
+                                    </div>
+
+                                    <div class="col-md-7 mt-md-0 mt-3">
+                                        <!-- button  -->
+                                        <button class="btn btn-primary me-2" type="submit">Search</button>
+                                        <a class="btn btn-light" href="#collapseExample" role="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                            <span class="filter-icon"><i class="mdi mdi-tune me-2"></i></span>More Filter
+                                        </a>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="row mb-4 align-items-center">
+                            <div class="col-md-6 col-8">
+                                <p class="mb-0 text-truncate">Showing 1 – 8 of 10 results</p>
+                            </div>
+                        </div>
+                           
+                        <div class="row">
+                 <!-- django functions here to display property-->
+                   {% for property in properties %}
+                        <div class="col-lg-4 col-md-6 col-12">
+                   <!-- listing block -->
+                          <div class="mb-6">
+                              <div class="position-relative">
+                                  <div id="listcarousel" class="carousel slide " data-bs-ride="carousel" data-bs-interval="false">
+                                      <ol class="carousel-indicators">
+                                          <li data-bs-target="#listcarousel" data-bs-slide-to="0" class="active rounded-circle"></li>
+                                          <li data-bs-target="#listcarousel" data-bs-slide-to="1" class="rounded-circle"></li>
+                                          <li data-bs-target="#listcarousel" data-bs-slide-to="2" class="rounded-circle"></li>
+                                      </ol>
+
+                                      
+                                      <!-- carousel  -->
+                                      <div class="carousel-inner rounded-3">
+                                          <div class="carousel-item active">
+                                              <img src="{{ property.photo.url }}" alt="spacehunt" class="w-100 ">
+                                          </div>
+                                          <!-- add more carousel of more pictures form property-->
+                                         
+                                      </div>
+                                      <a class="carousel-control-prev" href="#listcarousel" role="button" data-bs-slide="prev">
+                                          <i class="mdi mdi-chevron-left icon-shape icon-xs bg-white rounded-circle fs-4"></i>
+                                          <span class="visually-hidden">Previous</span>
+                                      </a>
+                                      <a class="carousel-control-next" href="#listcarousel" role="button" data-bs-slide="next">
+                                          <i class="mdi mdi-chevron-right icon-shape icon-xs bg-white rounded-circle fs-4"></i>
+                                          <span class="visually-hidden">Next</span>
+                                      </a>
+                                  </div>
+
+                                  <div class="btn-wishlist"></div>
+
+                                  <span class="badge bg-danger position-absolute top-0 ms-3 mt-3 z-1 ">Featured</span>
+
+                              </div>
+
+            
+
+                              <div class="mt-3">
+                                  <h4 class="mb-0 text-truncate"> <a href="{% url 'listings:property_detail' property.pk %}" class="text-inherit">{{property.name}}</a></h4>
+                                  <p class="text-sm font-weight-semi-bold">{{ property.description| truncatewords:12 }}</p>
+                                  <div class="d-flex justify-content-between mt-3">
+                                      <div>
+                                          <span class="h5">{{property.price}}</span><span class="text-sm font-weight-semi-bold ms-1"></span>
+                                      </div>
+                                      <div>
+                                          <span class="mdi mdi-star me-1 text-primary text-sm"></span>
+                                          <span class="font-weight-semi-bold  text-sm"><span class="text-dark">5.0</span> (8)</span>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                      
+                   
+
+                        <!-- listing block -->
+                          </div>
+                             <!--  end django functions here to display property-->
+                      {% empty %}
+                      <li>No properties found.</li>
+                    {% endfor %}
+                        
+                        </div>
+                    </div>
+                   
+        
+
+                </div>
+            </div>
+        </div>
+                  
+      
+    </div>
+    <!-- footer -->
+      <!-- footer section -->
+   
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <!-- modal header -->
+            <div class="modal-header">
+                <h4 class="modal-title" id="exampleModalLabel">More Filter</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <!-- modal body -->
+            <div class="modal-body">
+                <div class="p-3 more-filter-content">
+                    <div class="row mb-4 align-items-center">
+                        <!-- price -->
+                        <div class="col-md-3">
+                            <h5>Price</h5>
+                        </div>
+                        <div class="col-md-9 ">
+                            <!-- price menu -->
+                            <div class="price-menu">
+                                <div class="price-menu-body">
+                                    <div id="slider-padding"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-4">
+                        <!-- type -->
+                        <div class="col-md-3">
+                            <h5>Type</h5>
+                        </div>
+                        <div class="col-md-9">
+                            <!-- checkboxs -->
+                            <div class="btn-group" role="group" aria-label="filterType">
+                                <input type="checkbox" class="btn-check" id="apartment">
+                                <label class="btn btn-outline-secondary btn-sm" for="apartment">Apartment</label>
+                            </div>
+                            <div class="btn-group" role="group" aria-label="filterType">
+                                <input type="checkbox" class="btn-check" id="house">
+                                <label class="btn btn-outline-secondary btn-sm" for="house">House</label>
+                            </div>
+                            <div class="btn-group" role="group" aria-label="filterType">
+                                <input type="checkbox" class="btn-check" id="duplex">
+                                <label class="btn btn-outline-secondary btn-sm" for="duplex">Duplex</label>
+                            </div>
+                            <div class="btn-group" role="group" aria-label="filterType">
+                                <input type="checkbox" class="btn-check" id="condo">
+                                <label class="btn btn-outline-secondary btn-sm" for="condo">Condo</label>
+                            </div>
+                            <div class="btn-group" role="group" aria-label="filterType">
+                                <input type="checkbox" class="btn-check" id="room">
+                                <label class="btn btn-outline-secondary btn-sm" for="room">Room</label>
+                            </div>
+                            <div class="btn-group" role="group" aria-label="filterType">
+                                <input type="checkbox" class="btn-check" id="townhouse">
+                                <label class="btn btn-outline-secondary btn-sm" for="townhouse">Townhouse</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-4">
+                        <div class="col-md-3 col-12 ">
+                            <!-- bedroom -->
+                            <div>
+                                <h5 class="mb-0 text-truncate">Bedroom</h5>
+                            </div>
+                        </div>
+                        <div class="col-md-9 col-12">
+                            <!-- quantity input -->
+                            <div class="input-group w-50 align-items-center">
+                                <input type="button" value="-" class="button-minus border bg-white rounded-circle  icon-shape icon-sm mx-1 lh-0" data-field="quantity">
+                                <input type="number" step="1" max="10" value="0" name="quantity" class="quantity-field border-0 text-center w-25">
+                                <input type="button" value="+" class="button-plus border bg-white rounded-circle icon-shape icon-sm lh-0" data-field="quantity">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-4">
+                        <div class="col-md-3 col-12">
+                            <!-- bathroom -->
+                            <div>
+                                <h5 class="mb-0 text-truncate">Bathroom</h5>
+                            </div>
+                        </div>
+                        <div class="col-md-9 col-12">
+                            <!-- input -->
+                            <div class="input-group w-50 align-items-center">
+                                <input type="button" value="-" class="button-minus border bg-white rounded-circle  icon-shape icon-sm mx-1 lh-0" data-field="quantity">
+                                <input type="number" step="1" max="10" value="0" name="quantity" class="quantity-field border-0 text-center w-25">
+                                <input type="button" value="+" class="button-plus border bg-white rounded-circle icon-shape icon-sm lh-0" data-field="quantity">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-4">
+                        <div class="col-md-3 ">
+                            <h5>Pet Policy</h5>
+                        </div>
+                        <div class="col-md-9 ">
+                            <!-- checkboxs -->
+                            <div class="btn-group" role="group" aria-label="filterType">
+                                <input type="checkbox" class="btn-check" id="dogallowed">
+                                <label class="btn btn-outline-secondary btn-sm" for="dogallowed">Dog Allowed</label>
+                            </div>
+                            <div class="btn-group" role="group" aria-label="filterType">
+                                <input type="checkbox" class="btn-check" id="catallowed">
+                                <label class="btn btn-outline-secondary btn-sm" for="catallowed">Cat Allowed</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-4">
+                        <div class="col-md-3">
+                            <!-- amenities -->
+                            <h5>Amenities</h5>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <!-- checkbox -->
+                                    <div class="form-check ">
+                                        <input type="checkbox" class="form-check-input" id="customCheck1">
+                                        <label class="form-check-label" for="customCheck1">Washer/Dryer Hookups
+                </label>
+                                    </div>
+                                    <!-- checkbox -->
+                                    <div class="form-check ">
+                                        <input type="checkbox" class="form-check-input" id="customCheck2">
+                                        <label class="form-check-label" for="customCheck2">Air Conditioning
+                </label>
+                                    </div>
+                                    <!-- checkbox -->
+                                    <div class="form-check ">
+                                        <input type="checkbox" class="form-check-input" id="customCheck3">
+                                        <label class="form-check-label" for="customCheck3">Semi-Furniture
+                </label>
+                                    </div>
+                                    <div class="form-check ">
+                                        <input type="checkbox" class="form-check-input" id="customCheck4">
+                                        <label class="form-check-label" for="customCheck4">Patio
+                </label>
+                                    </div>
+                                    <!-- checkbox -->
+                                    <div class="form-check ">
+                                        <input type="checkbox" class="form-check-input" id="customCheck5">
+                                        <label class="form-check-label" for="customCheck5">Hardwood Floors </label>
+                                    </div>
+                                    <!-- checkbox -->
+                                    <div class="form-check ">
+                                        <input type="checkbox" class="form-check-input" id="customCheck6">
+                                        <label class="form-check-label" for="customCheck6">Walk-in Closets
+                </label>
+                                    </div>
+                                    <!-- checkbox -->
+                                    <div class="form-check ">
+                                        <input type="checkbox" class="form-check-input" id="customCheck7">
+                                        <label class="form-check-label" for="customCheck7">Wi-Fi
+                </label>
+                                    </div>
+                                    <!-- checkbox -->
+                                    <div class="form-check ">
+                                        <input type="checkbox" class="form-check-input" id="customCheck8">
+                                        <label class="form-check-label" for="customCheck8">Pool </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <!-- checkbox -->
+                                    <div class="form-check ">
+                                        <input type="checkbox" class="form-check-input" id="customCheck9">
+                                        <label class="form-check-label" for="customCheck9">Evelator
+                </label>
+                                    </div>
+                                    <!-- checkbox -->
+                                    <div class="form-check ">
+                                        <input type="checkbox" class="form-check-input" id="customCheck10">
+                                        <label class="form-check-label" for="customCheck10">Wheelchair Accessible
+                </label>
+                                    </div>
+                                    <!-- checkbox -->
+                                    <div class="form-check ">
+                                        <input type="checkbox" class="form-check-input" id="customCheck11">
+                                        <label class="form-check-label" for="customCheck11">Garden
+                </label>
+                                    </div>
+                                    <!-- checkbox -->
+                                    <div class="form-check ">
+                                        <input type="checkbox" class="form-check-input" id="customCheck12">
+                                        <label class="form-check-label" for="customCheck12">Furnished
+                </label>
+                                    </div>
+                                    <!-- checkbox -->
+                                    <div class="form-check ">
+                                        <input type="checkbox" class="form-check-input" id="customCheck13">
+                                        <label class="form-check-label" for="customCheck13">High Rise
+                </label>
+                                    </div>
+                                    <!-- checkbox -->
+                                    <div class="form-check ">
+                                        <input type="checkbox" class="form-check-input" id="customCheck14">
+                                        <label class="form-check-label" for="customCheck14">Utilities Included
+                </label>
+                                    </div>
+                                    <!-- checkbox -->
+                                    <div class="form-check ">
+                                        <input type="checkbox" class="form-check-input" id="customCheck15">
+                                        <label class="form-check-label" for="customCheck15">Balcony Included
+                </label>
+                                    </div>
+                                    <!-- checkbox -->
+                                    <div class="form-check ">
+                                        <input type="checkbox" class="form-check-input" id="customCheck16">
+                                        <label class="form-check-label" for="customCheck16">Student Friendly
+                </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- modal footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary btn-sm">Apply</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+  
+{% endblock %}
+

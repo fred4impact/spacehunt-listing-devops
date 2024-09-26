@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+  <h2>Update Property</h2>
+  
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    
+    <!-- Property Form -->
+    {{ form|crispy }}
+    
+    <!-- Location Form -->
+    {{ location_form|crispy }}
+    
+    <!-- Feature Form -->
+    {{ feature_form|crispy }}
+    
+    <button type="submit">Update</button>
+  </form>
+  
+
+  <a href="{% url 'property_list' %}">Back to Property List</a>
+  
+{% endblock %}

@@ -1,0 +1,95 @@
+{% extends 'just_base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+  <!-- pageheader  -->
+  <div class="py-6 py-lg-8 ">
+    <div class="container">
+        <div class="row">
+            <div class="offset-lg-1 col-lg-10 col-md-12 col-12 text-center">
+                <h1>Add Listing</h1>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- form  -->
+<div class="pb-lg-11 pb-7">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-6">
+            <form  method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+  
+                    <!-- Step 1 -->
+                    <div class="row mb-8">
+                        <div class="col-12">
+                            <div class="mb-4 border-bottom pb-2">
+                                <h4 class="mb-0">Basic Property information</h4>
+                            </div>
+                        </div>
+                        <!-- property name  -->
+                        <div class="col-12">
+                            <div class="mb-3">
+                                {{ form|crispy }}
+
+                                <div class="mb-4 border-bottom pb-2">
+                                    <h4 class="mb-0">Property location</h4>
+                                </div>
+
+                                {{ location_form|crispy }}
+                               
+                             
+
+                                <div class="card mb-4">
+                                    <div class="card-body p-4">
+                                        <h4 class="mb-3">Amenities</h4>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <ul class="list-group list-unstyled">
+                                                    
+                                                    <li class="list-item">{{ features_form.air_conditioning|as_crispy_field }}
+                                                    </li>
+                                                    <li class="list-item">{{ features_form.personal_safe|as_crispy_field}}
+                                                    </li>
+                                                    <li class="list-item">{{ features_form.refrigerator|as_crispy_field }}</li>
+                                                    <li class="list-item">{{ features_form.pool|as_crispy_field }}</li>
+                                                    <li class="list-item">{{ features_form.electronic_key_card_access|as_crispy_field }}
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <ul class="list-group list-unstyled"><li class="list-item">{{ features_form.wifi|as_crispy_field }}
+                                                </li>
+
+                                                    <li class="list-item">{{ features_form.heating|as_crispy_field }}
+                                                    </li>
+                                                    <li class="list-item">{{ features_form.equipped_Kitchen|as_crispy_field}}
+                                                    </li>
+                                                    <li class="list-item">{{ features_form.washing_machine|as_crispy_field }}
+                                                    </li>
+                                                    <li class="list-item">{{ features_form.minibar|as_crispy_field }}
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- end of aminities -->
+                            
+                            </div>
+                        </div>
+
+                       
+                    <!-- submit button  -->
+                    <div class="d-grid gap-2">
+                        <button class="btn btn-primary" type="submit">Add Listing</button>
+                       
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

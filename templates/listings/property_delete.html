@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Delete Property</h1>
+  <p>Are you sure you want to delete "{{ property.title }}"?</p>
+  <form method="post" action="{% url 'listings:property_delete' property.pk %}">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger">Delete</button>
+    <a href="{% url 'listings:property_detail' property.pk %}" class="btn btn-secondary">Cancel</a>
+  </form>
+{% endblock %}
